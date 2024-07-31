@@ -61,7 +61,7 @@ function Report() {
     <div className="container mt-4">
       <div className="card">
         <div className="card-body">
-          <h1 className="card-title">App Report</h1>
+          <h1 className="card-title">Report</h1>
           <div className="table-responsive">
             <DataTable value={data} responsiveLayout="scroll">
               <Column
