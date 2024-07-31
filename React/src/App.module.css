@@ -1,0 +1,14 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden; /* Prevents horizontal overflow */
+  overflow-y: auto; /* Allows vertical overflow */
+}
+
+.dashboard {
+  flex-grow: 1; /* Allow the Dashboard to grow */
+  overflow-y: auto; /* Enables vertical scrolling if content exceeds height */
+  height: 100vh; /* Fixed height of 100% viewport height */
+  padding: 15px; /* Adjust padding as necessary */
+}

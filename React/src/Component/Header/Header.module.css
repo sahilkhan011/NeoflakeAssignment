@@ -1,0 +1,17 @@
+.largeToggleBtn {
+  display: none; /* Hidden by default */
+}
+
+.smallToggleBtn {
+  display: block; /* Visible by default */
+}
+
+@media only screen and (min-width: 992px) {
+  .largeToggleBtn {
+    display: block; /* Visible on large screens */
+  }
+
+  .smallToggleBtn {
+    display: none; /* Hidden on large screens */
+  }
+}

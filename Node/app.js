@@ -1,10 +1,11 @@
 import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
 import mongoose from "mongoose";
 import cors from "cors";
 import appRouter from "./routes/index.js";
 
-dotenv.config();
+import fileUpload from "express-fileupload";
+
 const app = express();
 
 // DB CONNECTION
@@ -16,11 +17,19 @@ async function main() {
 }
 
 // Middleware
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 app.use(cors());
 app.use(express.json());
 
 // Routes
 app.use("/api/app", appRouter);
+app.get("/api/hello", (req, res) => {
+  res.send("hello");
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
