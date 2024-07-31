@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import { Link, useLocation } from "react-router-dom";
-import { FaHome, FaEnvelope } from "react-icons/fa";
+import { FaPlus, FaFileAlt } from "react-icons/fa";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import style from "./Sidebar.module.css";
 
 const Sidebar = ({ isSidebarOpen }) => {
   const location = useLocation();
+
   const links = [
-    { name: "Dashboard", link: "/", icon: <FaHome /> },
-    { name: "Report", link: "/report", icon: <FaEnvelope /> },
+    { name: "Add", link: "/", icon: <FaPlus /> },
+    { name: "Report", link: "/report", icon: <FaFileAlt /> },
   ];
 
   return (

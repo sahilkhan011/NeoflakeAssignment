@@ -28,7 +28,7 @@ const AppSchema = new mongoose.Schema(
 );
 
 // Create the model from the schema
-const AppModel = mongoose.model("App", AppSchema);
+const AppModel = mongoose.model("upload", AppSchema);
 
 // Export the model
 export default AppModel;

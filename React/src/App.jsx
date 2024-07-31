@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./Component/Sidebar/Sidebar";
 import { useState } from "react";
 import Header from "./Component/Header/Header";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import AddNew from "./pages/AddNew/AddNew";
 import Report from "./pages/Reports/Report";
 import style from "./App.module.css";
 
@@ -26,7 +26,7 @@ function App() {
                   <Header toggleSidebar={toggleSidebar} />
 
                   <Routes>
-                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/" element={<AddNew />} />
                     <Route path="/report" element={<Report />} />
                   </Routes>
                 </div>

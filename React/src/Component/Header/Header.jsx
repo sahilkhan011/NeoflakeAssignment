@@ -15,7 +15,7 @@ const Header = ({ toggleSidebar }) => {
           <FaBars size={24} />
         </button>
 
-        <span className="navbar-brand mx-auto">AppName</span>
+        <span className="navbar-brand mx-auto">Neonflake Assignment</span>
         <div className="d-flex align-items-center ms-auto">
           <button
             onClick={toggleSidebar}
