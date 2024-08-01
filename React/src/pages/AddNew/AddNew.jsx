@@ -64,60 +64,66 @@ function AddNew() {
   return (
     <>
       {isWaiting && <WaitingOverlay message="Uploading data, please wait..." />}
-      <div className="container mt-5">
-        <h2>Add New</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group m-2">
-            <label htmlFor="formTitle">Title</label>
-            <input
-              type="text"
-              className="form-control"
-              id="formTitle"
-              name="title"
-              maxLength={50}
-              required
-            />
-          </div>
+      <div className="container mt-4">
+        <div className="card">
+          <div className="card-body">
+            <h1 className="card-title">Add New</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group m-2">
+                <label htmlFor="formTitle">Title</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="formTitle"
+                  name="title"
+                  maxLength={50}
+                  required
+                />
+              </div>
 
-          <div className="form-group m-2">
-            <label htmlFor="formDescription">Description</label>
-            <textarea
-              className="form-control"
-              id="formDescription"
-              name="description"
-              maxLength={200}
-              required
-            ></textarea>
-          </div>
+              <div className="form-group m-2">
+                <label htmlFor="formDescription">Description</label>
+                <textarea
+                  className="form-control"
+                  id="formDescription"
+                  name="description"
+                  maxLength={200}
+                  required
+                ></textarea>
+              </div>
 
-          <div className="form-group m-3">
-            <label htmlFor="formThumbnail">Upload Thumbnail (JPG, PNG)</label>
-            <input
-              type="file"
-              className="form-control-file"
-              id="formThumbnail"
-              name="thumbnail"
-              accept="image/jpeg, image/png"
-              required
-            />
-          </div>
+              <div className="form-group m-3">
+                <label htmlFor="formThumbnail">
+                  Upload Thumbnail (JPG, PNG)
+                </label>
+                <input
+                  type="file"
+                  className="form-control-file"
+                  id="formThumbnail"
+                  name="thumbnail"
+                  accept="image/jpeg, image/png"
+                  required
+                />
+              </div>
 
-          <div className="form-group m-3">
-            <label htmlFor="formVideo">Upload Video (MPG, AVI, MP4)</label>
-            <input
-              type="file"
-              className="form-control-file"
-              id="formVideo"
-              name="video"
-              accept="video/mpg, video/avi, video/mp4"
-              required
-            />
-          </div>
+              <div className="form-group m-3">
+                <label htmlFor="formVideo">Upload Video (MPG, AVI, MP4)</label>
+                <input
+                  type="file"
+                  className="form-control-file"
+                  id="formVideo"
+                  name="video"
+                  accept="video/mpg, video/avi, video/mp4"
+                  required
+                />
+              </div>
 
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );
