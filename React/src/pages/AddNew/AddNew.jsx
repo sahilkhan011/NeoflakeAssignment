@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { uploadData } from "../../Api";
+import WaitingOverlay from "../../Component/WaitingOverlay/WaitingOverlay";
 
 function AddNew() {
+  const [isWaiting, setWaiting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -12,6 +16,7 @@ function AddNew() {
     const thumbnail = formData.get("thumbnail");
     const video = formData.get("video");
 
+    // Form validation
     if (!title || title.length === 0 || title.length > 50) {
       alert("Title is required and must be less than 50 characters.");
       return;
@@ -32,13 +37,17 @@ function AddNew() {
       return;
     }
 
+    // Upload data
     try {
+      setWaiting(true);
       const data = await uploadData(formData);
       console.log(data);
       alert("Upload successful!");
     } catch (error) {
       console.error(error);
       alert(error.message);
+    } finally {
+      setWaiting(false);
     }
   };
 
@@ -53,61 +62,64 @@ function AddNew() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Add New</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="formTitle">Title</label>
-          <input
-            type="text"
-            className="form-control"
-            id="formTitle"
-            name="title"
-            maxLength={50}
-            required
-          />
-        </div>
+    <>
+      {isWaiting && <WaitingOverlay message="Uploading data, please wait..." />}
+      <div className="container mt-5">
+        <h2>Add New</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group m-2">
+            <label htmlFor="formTitle">Title</label>
+            <input
+              type="text"
+              className="form-control"
+              id="formTitle"
+              name="title"
+              maxLength={50}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="formDescription">Description</label>
-          <textarea
-            className="form-control"
-            id="formDescription"
-            name="description"
-            maxLength={200}
-            required
-          ></textarea>
-        </div>
+          <div className="form-group m-2">
+            <label htmlFor="formDescription">Description</label>
+            <textarea
+              className="form-control"
+              id="formDescription"
+              name="description"
+              maxLength={200}
+              required
+            ></textarea>
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="formThumbnail">Upload Thumbnail (JPG, PNG)</label>
-          <input
-            type="file"
-            className="form-control-file"
-            id="formThumbnail"
-            name="thumbnail"
-            accept="image/jpeg, image/png"
-            required
-          />
-        </div>
+          <div className="form-group m-3">
+            <label htmlFor="formThumbnail">Upload Thumbnail (JPG, PNG)</label>
+            <input
+              type="file"
+              className="form-control-file"
+              id="formThumbnail"
+              name="thumbnail"
+              accept="image/jpeg, image/png"
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="formVideo">Upload Video (MPG, AVI, MP4)</label>
-          <input
-            type="file"
-            className="form-control-file"
-            id="formVideo"
-            name="video"
-            accept="video/mpg, video/avi, video/mp4"
-            required
-          />
-        </div>
+          <div className="form-group m-3">
+            <label htmlFor="formVideo">Upload Video (MPG, AVI, MP4)</label>
+            <input
+              type="file"
+              className="form-control-file"
+              id="formVideo"
+              name="video"
+              accept="video/mpg, video/avi, video/mp4"
+              required
+            />
+          </div>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 
